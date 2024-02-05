@@ -1,11 +1,18 @@
 ﻿@using GroupManager.Data.Models;
 
 <div class="groups-display">
-    @foreach (var group in Groups)
-    {
-        <div>@group</div>
-    }
-    @ChildContent
+    <div class="groups-display__buttons">
+        @foreach (var group in Groups)
+        {
+            <button Class="group-button mud-width-full">
+                <MudIcon Icon="@Icons.Material.Filled.Save" Title="@group"></MudIcon>
+                @group
+            </button>
+        }
+    </div>
+    <div class="groups-display__drop-area">
+        @ChildContent
+    </div>
 </div>
 
 @code {
