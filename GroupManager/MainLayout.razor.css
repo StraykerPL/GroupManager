@@ -1,9 +1,12 @@
 .main-container {
     height: 100%;
     display: grid;
-    grid-template-columns: 6.25rem 1fr;
+    grid-template-columns: 4.063rem 1fr;
 }
 
 .main-container__content {
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+    padding: 15px;
 }
