@@ -1,9 +1,14 @@
 ﻿@using GroupManager.Components
 
 <div class="users-list">
-    UsersList
+    <div class="users-list__header">
+        Użytkownicy
+        <button>
+            <MudIcon Icon="@Icons.Material.Filled.MoreVert" />
+        </button>
+    </div>
     <div>
-        <MudDivider DividerType="DividerType.Middle" Light="true" />
+        <MudDivider DividerType="DividerType.Middle" Class="divider" />
         <LogMonitor />
     </div>
 </div>
