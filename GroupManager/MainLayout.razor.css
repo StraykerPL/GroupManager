@@ -1,0 +1,9 @@
+.main-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 6.25rem 1fr;
+}
+
+.main-container__content {
+
+}
