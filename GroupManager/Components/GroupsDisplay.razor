@@ -1,3 +1,13 @@
-﻿<div class="groups-display">
-    GroupsDisplay
+﻿@using GroupManager.Data.Models;
+
+<div class="groups-display">
+    @foreach (var group in Groups)
+    {
+        <div>@group.Name</div>
+    }
 </div>
+
+@code {
+    [Parameter]
+    public List<Group> Groups { get; set; } = new List<Group>();
+}

@@ -1,5 +1,21 @@
 ﻿@page "/"
 @using GroupManager.Components
+@using GroupManager.Data.Models
+@using GroupManager.Data.Services.Interfaces;
 
-<UsersList />
-<GroupsDisplay />
+@inject IDataProvider DataProvider
+@inject IGroupsManager Manager
+
+<UsersList Users="Users" />
+<GroupsDisplay Groups="Groups" />
+
+@code {
+    private List<User> Users = new List<User>();
+    private List<Group> Groups = new List<Group>();
+
+    protected override void OnInitialized()
+    {
+        Users = (List<User>)DataProvider.GetUsers();
+        Groups = (List<Group>)DataProvider.GetGroups();
+    }
+}

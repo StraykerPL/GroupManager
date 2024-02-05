@@ -1,4 +1,5 @@
 ﻿@using GroupManager.Components
+@using GroupManager.Data.Models;
 
 <div class="users-list">
     <div class="users-list__header">
@@ -8,7 +9,18 @@
         </button>
     </div>
     <div>
+        @foreach (var user in Users)
+        {
+            <div>@user.Name @user.Surename @user.City</div>
+        }
+    </div>
+    <div>
         <MudDivider DividerType="DividerType.Middle" Class="divider" />
         <LogMonitor />
     </div>
 </div>
+
+@code {
+    [Parameter]
+    public List<User> Users { get; set; } = new List<User>();
+}

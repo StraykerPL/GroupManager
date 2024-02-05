@@ -1,0 +1,7 @@
+.log-monitor {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3px;
+    min-height: 400px;
+    overflow-y: scroll;
+}
