@@ -6,16 +6,40 @@
 @inject IDataProvider DataProvider
 @inject IGroupsManager Manager
 
-<UsersList Users="Users" />
-<GroupsDisplay Groups="Groups" />
+<PageTitle>Group Manager</PageTitle>
+
+<MudDropContainer T="User" Items="Users" ItemsSelector="@((item, dropzone) => true)" ItemDropped="DropCompleted" Class="d-grid mud-height-full">
+    <ChildContent>
+        <div class="drop-zones-container">
+            <UsersList Users="Users">
+                <MudDropZone T="User" Identifier="Users"></MudDropZone>
+            </UsersList>
+            <GroupsDisplay Groups="Groups">
+                <MudDropZone T="User" Identifier="@SelectedGroup.Name"></MudDropZone>
+            </GroupsDisplay>
+        </div>
+    </ChildContent>
+    <ItemRenderer>
+        <div>@context.Name @context.Surename @context.City</div>
+    </ItemRenderer>
+</MudDropContainer>
 
 @code {
     private List<User> Users = new List<User>();
     private List<Group> Groups = new List<Group>();
 
+    private Group SelectedGroup = new Group();
+
     protected override void OnInitialized()
     {
         Users = (List<User>)DataProvider.GetUsers();
         Groups = (List<Group>)DataProvider.GetGroups();
+
+        SelectedGroup = Groups[0];
+    }
+
+    private void DropCompleted(MudItemDropInfo<User> droppedObject)
+    {
+        droppedObject.Item!.Name = droppedObject.DropzoneIdentifier;
     }
 }

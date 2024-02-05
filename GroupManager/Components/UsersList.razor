@@ -9,10 +9,11 @@
         </button>
     </div>
     <div>
-        @foreach (var user in Users)
+        @*@foreach (var user in Users)
         {
             <div>@user.Name @user.Surename @user.City</div>
-        }
+        }*@
+        @ChildContent
     </div>
     <div>
         <MudDivider DividerType="DividerType.Middle" Class="divider" />
@@ -21,6 +22,9 @@
 </div>
 
 @code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
     [Parameter]
     public List<User> Users { get; set; } = new List<User>();
 }
