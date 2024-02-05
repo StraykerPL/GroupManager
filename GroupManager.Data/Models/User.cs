@@ -10,14 +10,14 @@
 
         public string City { get; set; }
 
-        public string ProfilePictureUrl { get; set; }
+        public string GroupName { get; set; }
 
         public User()
         {
             Name = string.Empty;
             Surename = string.Empty;
             City = string.Empty;
-            ProfilePictureUrl = string.Empty;
+            GroupName = string.Empty;
         }
     }
 }

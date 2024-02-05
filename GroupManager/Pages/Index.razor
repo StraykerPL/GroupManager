@@ -8,14 +8,14 @@
 
 <PageTitle>Group Manager</PageTitle>
 
-<MudDropContainer T="User" Items="Users" ItemsSelector="@((item, dropzone) => true)" ItemDropped="DropCompleted" Class="d-grid mud-height-full">
+<MudDropContainer T="User" Items="Users" ItemsSelector="@((item, dropzone) => item.GroupName == dropzone)" ItemDropped="DropCompleted" Class="d-grid mud-height-full">
     <ChildContent>
         <div class="drop-zones-container">
-            <UsersList Users="Users">
-                <MudDropZone T="User" Identifier="Users"></MudDropZone>
+            <UsersList Users="Users" Messages="LogMessages">
+                <MudDropZone T="User" Identifier="UsersList"></MudDropZone>
             </UsersList>
             <GroupsDisplay Groups="Groups">
-                <MudDropZone T="User" Identifier="@SelectedGroup.Name"></MudDropZone>
+                <MudDropZone T="User" Identifier="@SelectedGroup" Class="mud-width-full mud-height-full"></MudDropZone>
             </GroupsDisplay>
         </div>
     </ChildContent>
@@ -26,20 +26,24 @@
 
 @code {
     private List<User> Users = new List<User>();
-    private List<Group> Groups = new List<Group>();
+    private List<string> Groups = new List<string>();
+    private List<string> LogMessages = new List<string>();
 
-    private Group SelectedGroup = new Group();
+    private string SelectedGroup = string.Empty;
 
     protected override void OnInitialized()
     {
         Users = (List<User>)DataProvider.GetUsers();
-        Groups = (List<Group>)DataProvider.GetGroups();
+        Groups = (List<string>)DataProvider.GetGroups();
 
-        SelectedGroup = Groups[0];
+        SelectedGroup = "Grupa 1";
     }
 
     private void DropCompleted(MudItemDropInfo<User> droppedObject)
     {
-        droppedObject.Item!.Name = droppedObject.DropzoneIdentifier;
+        droppedObject.Item!.GroupName = droppedObject.DropzoneIdentifier;
+        var desiredLogAction = droppedObject.DropzoneIdentifier is "UsersList" ? LogActionType.Remove : LogActionType.Add;
+
+        LogMessages.Add(Manager.LogAction(desiredLogAction, droppedObject.Item!, SelectedGroup));
     }
 }

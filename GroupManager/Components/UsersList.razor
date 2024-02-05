@@ -9,15 +9,11 @@
         </button>
     </div>
     <div>
-        @*@foreach (var user in Users)
-        {
-            <div>@user.Name @user.Surename @user.City</div>
-        }*@
         @ChildContent
     </div>
     <div>
         <MudDivider DividerType="DividerType.Middle" Class="divider" />
-        <LogMonitor />
+        <LogMonitor Messages="Messages" />
     </div>
 </div>
 
@@ -27,4 +23,7 @@
 
     [Parameter]
     public List<User> Users { get; set; } = new List<User>();
+
+    [Parameter]
+    public List<string> Messages { get; set; } = new List<string>();
 }

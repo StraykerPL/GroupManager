@@ -5,27 +5,27 @@ namespace GroupManager.Data.Services
 {
     public sealed class DefaultDataProvider : IDataProvider
     {
-        public ICollection<Group> GetGroups()
+        private readonly List<string> _groups = new List<string>()
         {
-            return new List<Group>()
-            {
-                new Group() { Id = 1, Name = "Grupa 1" },
-                new Group() { Id = 2, Name = "Grupa 2" },
-                new Group() { Id = 3, Name = "Grupa 3" },
-                new Group() { Id = 4, Name = "Grupa 4" },
-                new Group() { Id = 5, Name = "Grupa 5" },
-            };
-        }
+            "Grupa 1", "Grupa 2", "Grupa 3", "Grupa 4", "Grupa 5"
+        };
+
+        private readonly List<User> _users = new List<User>()
+        {
+            new User() { Id = 1, Name = "Adam", Surename = "Kowalski", City = "Radom", GroupName = "UsersList" },
+            new User() { Id = 2, Name = "Piotr", Surename = "Piotrowski", City = "Radom", GroupName = "UsersList" },
+            new User() { Id = 3, Name = "Magda", Surename = "Nowakowska", City = "Warszawa", GroupName = "UsersList" },
+            new User() { Id = 4, Name = "Jan", Surename = "Nowak", City = "Radom", GroupName = "UsersList" },
+        };
 
         public ICollection<User> GetUsers()
         {
-            return new List<User>()
-            {
-                new User() { Id = 1, Name = "Adam", Surename = "Kowalski", City = "Radom" },
-                new User() { Id = 2, Name = "Piotr", Surename = "Piotrowski", City = "Radom" },
-                new User() { Id = 3, Name = "Magda", Surename = "Nowakowska", City = "Warszawa" },
-                new User() { Id = 4, Name = "Jan", Surename = "Nowak", City = "Radom" },
-            };
+            return _users;
+        }
+
+        public ICollection<string> GetGroups()
+        {
+            return _groups;
         }
     }
 }

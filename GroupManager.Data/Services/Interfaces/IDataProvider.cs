@@ -6,6 +6,6 @@ namespace GroupManager.Data.Services.Interfaces
     {
         ICollection<User> GetUsers();
 
-        ICollection<Group> GetGroups();
+        ICollection<string> GetGroups();
     }
 }
