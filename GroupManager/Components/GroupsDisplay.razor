@@ -4,7 +4,7 @@
     <div class="groups-display__buttons">
         @foreach (var group in Groups)
         {
-            <button Class="group-button mud-width-full" onclick="ChangeGroup(@group)">
+            <button Class="group-button mud-width-full" @onclick="() => OnSelectedGroupChange.InvokeAsync(group)">
                 <MudIcon Icon="@Icons.Material.Filled.Save" Title="@group"></MudIcon>
                 @group
             </button>
@@ -24,9 +24,4 @@
 
     [Parameter]
     public List<string> Groups { get; set; } = new List<string>();
-
-    private void ChangeGroup(string newSelectedGroup)
-    {
-        OnSelectedGroupChange.InvokeAsync(newSelectedGroup);
-    }
 }
