@@ -8,7 +8,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices();
 
 builder.Services.AddScoped<IDataProvider, DefaultDataProvider>();
-builder.Services.AddScoped<IGroupsManager, DefaultGroupsManager>();
+builder.Services.AddScoped<ILoggingManager, DefaultLoggingManager>();
 
 var app = builder.Build();
 

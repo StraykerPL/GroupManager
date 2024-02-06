@@ -2,7 +2,7 @@
 
 namespace GroupManager.Data.Services.Interfaces
 {
-    public interface IGroupsManager
+    public interface ILoggingManager
     {
         string LogAction(LogActionType type, User user, string groupName);
     }

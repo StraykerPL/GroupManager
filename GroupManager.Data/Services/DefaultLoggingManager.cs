@@ -3,7 +3,7 @@ using GroupManager.Data.Services.Interfaces;
 
 namespace GroupManager.Data.Services
 {
-    public sealed class DefaultGroupsManager : IGroupsManager
+    public sealed class DefaultLoggingManager : ILoggingManager
     {
         public string LogAction(LogActionType type, User user, string groupName)
         {
