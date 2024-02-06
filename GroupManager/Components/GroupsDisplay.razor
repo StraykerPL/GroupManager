@@ -1,11 +1,12 @@
-﻿@using GroupManager.Data.Models;
+﻿@using GroupManager.Constants;
+@using GroupManager.Data.Models;
 
 <div class="groups-display">
     <div class="groups-display__buttons">
         @foreach (var group in Groups)
         {
             <button Class="group-button mud-width-full" @onclick="() => OnSelectedGroupChange.InvokeAsync(group)">
-                <MudIcon Icon="@Icons.Material.Filled.Save" Title="@group"></MudIcon>
+                <MudIcon Icon="@Icons.GroupsIconsList[group]" Title="@group"></MudIcon>
                 @group
             </button>
         }
@@ -16,6 +17,8 @@
 </div>
 
 @code {
+    private readonly GroupsIcons Icons = new();
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
