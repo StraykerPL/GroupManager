@@ -21,7 +21,7 @@
         </div>
     </ChildContent>
     <ItemRenderer>
-        <div>@context.Name @context.Surename @context.City</div>
+        <UserCard Id="@context.Id" Name="@context.Name" Surename="@context.Surename" City="@context.City"></UserCard>
     </ItemRenderer>
 </MudDropContainer>
 
@@ -49,7 +49,7 @@
     private void DropCompleted(MudItemDropInfo<User> droppedObject)
     {
         droppedObject.Item!.GroupName = droppedObject.DropzoneIdentifier;
-        var desiredLogAction = droppedObject.DropzoneIdentifier is GroupIdentifiersValues.UsersDefaultGroup ?
+        LogActionType desiredLogAction = droppedObject.DropzoneIdentifier is GroupIdentifiersValues.UsersDefaultGroup ?
             LogActionType.Remove : LogActionType.Add;
 
         LogMessages.Add(Manager.LogAction(desiredLogAction, droppedObject.Item!, SelectedGroup));

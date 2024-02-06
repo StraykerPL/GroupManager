@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupManager", "GroupManager\GroupManager.csproj", "{B0D828CA-96BD-44E3-A6F2-50D352547A72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupManager", "GroupManager\GroupManager.csproj", "{B0D828CA-96BD-44E3-A6F2-50D352547A72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupManager.Data", "GroupManager.Data\GroupManager.Data.csproj", "{A2985E0C-0C73-466B-BE9C-0378BEB192C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupManager.Data", "GroupManager.Data\GroupManager.Data.csproj", "{A2985E0C-0C73-466B-BE9C-0378BEB192C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
