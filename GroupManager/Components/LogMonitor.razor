@@ -1,13 +1,30 @@
-﻿@using GroupManager.Data.Models;
+﻿@using GroupManager.Constants;
+@using GroupManager.Data.Constants;
+@using GroupManager.Data.Models;
 
 <div class="log-monitor">
     @foreach (var message in Messages)
     {
-        <div>@message</div>
+        <div><MudIcon Icon="@GetGroupIcon(message)" /> @message</div>
     }
 </div>
 
 @code {
+    private readonly GroupsIcons Icons = new();
+
     [Parameter]
     public List<string> Messages { get; set; } = new List<string>();
+
+    private string GetGroupIcon(string logMessage)
+    {
+        foreach (var icon in Icons.GroupsIconsList)
+        {
+            if (logMessage.EndsWith(icon.Key[icon.Key.Length - 1]))
+            {
+                return icon.Value;
+            }
+        }
+
+        return Icons.GroupsIconsList[GroupIdentifiersValues.DefaultSelectedGroup];
+    }
 }
