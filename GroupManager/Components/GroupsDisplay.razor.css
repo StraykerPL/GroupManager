@@ -30,6 +30,6 @@
     background-color: white;
 }
 
-.group-button:hover {
-    cursor: pointer;
-}
+    .group-button:hover {
+        cursor: pointer;
+    }
