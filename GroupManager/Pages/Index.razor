@@ -13,7 +13,7 @@
     <ChildContent>
         <div class="drop-zones-container">
             <UsersList Users="Users" Messages="LogMessages">
-                <MudDropZone T="User" Identifier="@GroupIdentifiersValues.UsersDefaultGroup"></MudDropZone>
+                <MudDropZone T="User" Identifier="@GroupIdentifiersValues.UsersDefaultGroup" Class="mud-width-full mud-height-full"></MudDropZone>
             </UsersList>
             <GroupsDisplay Groups="Groups" OnSelectedGroupChange="GetNewGroupSelection">
                 <MudDropZone T="User" Identifier="@SelectedGroup" Class="mud-width-full mud-height-full"></MudDropZone>

@@ -5,12 +5,17 @@
 <div class="log-monitor">
     @foreach (var message in Messages)
     {
-        <div><MudIcon Icon="@GetGroupIcon(message)" /> @message</div>
+        <div class="log-monitor__log-entry @ChangeBackground()">
+            <MudIcon Icon="@GetGroupIcon(message)" Size="Size.Small" />
+            @message
+        </div>
+        Iterator++;
     }
 </div>
 
 @code {
     private readonly GroupsIcons Icons = new();
+    private int Iterator { get; set; } = 1;
 
     [Parameter]
     public List<string> Messages { get; set; } = new List<string>();
@@ -27,4 +32,6 @@
 
         return Icons.GroupsIconsList[GroupIdentifiersValues.DefaultSelectedGroup];
     }
+
+    private string ChangeBackground() => Iterator % 2 == 0 ? "log-monitor__log-entry--dark" : "log-monitor__log-entry--light";
 }
